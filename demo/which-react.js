@@ -1,4 +1,4 @@
 import { createRoot } from "../src/react-dom"
-import { Component } from "../src/react"
+import { Component, useReducer } from "../src/react"
 
-export { createRoot, Component }
+export { createRoot, Component, useReducer }
