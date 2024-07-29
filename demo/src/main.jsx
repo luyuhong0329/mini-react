@@ -1,7 +1,7 @@
 // import React from "react"
 // import { createRoot } from "react-dom/client"
 // import { useReducer, Component } from "react"
-import { createRoot, Component, useReducer } from "../which-react"
+import { createRoot, Component, useReducer, useState } from "../which-react"
 
 import "./index.css"
 
@@ -10,15 +10,17 @@ function FunctionComponent(props) {
     console.log("log")
     return x + 1
   }, 0)
-  // const [count2, setCount2] = useState(0)
+  const [count2, setCount2] = useState(0)
+  const [count3, setCount3] = useState(0)
 
   return (
     <div className="border">
       <p>{props.name}</p>
       <button onClick={() => setCount()}>{count}</button>
-      {/* <button onClick={() => setCount2(count2 + 1)}>{count2}</button>
+      <button onClick={() => setCount2((x) => x + 1)}>{count2}</button>
+      <button onClick={() => setCount3(count3 + 1)}>{count3}</button>
 
-      {count % 2 ? <div>omg</div> : <span>o</span>} */}
+      {/* {count % 2 ? <div>omg</div> : <span>o</span>} */}
     </div>
   )
 }
