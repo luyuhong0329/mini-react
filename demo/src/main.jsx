@@ -11,16 +11,32 @@ function FunctionComponent(props) {
     return x + 1
   }, 0)
   const [count2, setCount2] = useState(0)
-  const [count3, setCount3] = useState(0)
+  // const [count3, setCount3] = useState(0)
 
   return (
     <div className="border">
       <p>{props.name}</p>
       <button onClick={() => setCount()}>{count}</button>
-      <button onClick={() => setCount2((x) => x + 1)}>{count2}</button>
-      <button onClick={() => setCount3(count3 + 1)}>{count3}</button>
-
+      {/* <button onClick={() => setCount2((x) => x + 1)}>{count2}</button>
+      <button onClick={() => setCount3(count3 + 1)}>{count3}</button> */}
+      <button
+        onClick={() => {
+          if (count2 === 0) {
+            setCount2(4)
+          } else {
+            setCount2(count2 - 2)
+          }
+        }}
+      >
+        {count2}
+      </button>
       {count % 2 ? <div>omg</div> : <span>o</span>}
+
+      <ul>
+        {[0, 1, 2, 3, 4].map((item) => {
+          return count2 >= item ? <li key={item}>{item}</li> : null
+        })}
+      </ul>
     </div>
   )
 }
