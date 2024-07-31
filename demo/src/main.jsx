@@ -6,41 +6,51 @@ import { createRoot, Component, useReducer, useState } from "../which-react"
 import "./index.css"
 
 function FunctionComponent(props) {
-  const [count, setCount] = useReducer((x) => {
-    console.log("log")
-    return x + 1
-  }, 0)
-  const [count2, setCount2] = useState(0)
-  // const [count3, setCount3] = useState(0)
+  const [count, setCount] = useReducer((x) => x + 1, 0);
+  const [count2, setCount2] = useState(0);
+
+  // useEffect(() => {
+  //   console.log("omg useEffect", count2); //sy-log
+  // }, [count2]);
+
+  // useLayoutEffect(() => {
+  //   console.log("omg useLayoutEffect", count2); //sy-log
+  // }, [count2]);
 
   return (
     <div className="border">
       <p>{props.name}</p>
       <button onClick={() => setCount()}>{count}</button>
-      {/* <button onClick={() => setCount2((x) => x + 1)}>{count2}</button>
-      <button onClick={() => setCount3(count3 + 1)}>{count3}</button> */}
       <button
         onClick={() => {
-          if (count2 === 0) {
-            setCount2(4)
-          } else {
-            setCount2(count2 - 2)
-          }
+          setCount2(count2 + 1);
         }}
       >
         {count2}
       </button>
-      {count % 2 ? <div>omg</div> : <span>o</span>}
+
+      {count % 2 ? <div>omg</div> : <span>123</span>}
 
       <ul>
-        {[0, 1, 2, 3, 4].map((item) => {
-          return count2 >= item ? <li key={item}>{item}</li> : null
-        })}
+        {/* {count2 === 2
+          ? [0, 1, 3, 4].map((item) => {
+              return <li key={item}>{item}</li>;
+            })
+          : [0, 1, 2, 3, 4].map((item) => {
+              return <li key={item}>{item}</li>;
+            })} */}
+
+        {count2 === 2
+          ? [2, 1, 3, 4].map((item) => {
+              return <li key={item}>{item}</li>;
+            })
+          : [0, 1, 2, 3, 4].map((item) => {
+              return <li key={item}>{item}</li>;
+            })}
       </ul>
     </div>
-  )
+  );
 }
-
 class ClassComponent extends Component {
   constructor(props) {
     super(props)
