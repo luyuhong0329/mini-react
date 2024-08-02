@@ -1,21 +1,28 @@
 // import React from "react"
 // import { createRoot } from "react-dom/client"
 // import { useReducer, Component } from "react"
-import { createRoot, Component, useReducer, useState } from "../which-react"
+import {
+  createRoot,
+  Component,
+  useReducer,
+  useState,
+  useEffect,
+  useLayoutEffect
+} from "../which-react"
 
 import "./index.css"
 
 function FunctionComponent(props) {
-  const [count, setCount] = useReducer((x) => x + 1, 0);
-  const [count2, setCount2] = useState(0);
+  const [count, setCount] = useReducer((x) => x + 1, 0)
+  const [count2, setCount2] = useState(0)
 
-  // useEffect(() => {
-  //   console.log("omg useEffect", count2); //sy-log
-  // }, [count2]);
+  useEffect(() => {
+    console.log("omg useEffect", count2) //sy-log
+  }, [count2])
 
-  // useLayoutEffect(() => {
-  //   console.log("omg useLayoutEffect", count2); //sy-log
-  // }, [count2]);
+  useLayoutEffect(() => {
+    console.log("omg useLayoutEffect", count2); //sy-log
+  }, [count2]);
 
   return (
     <div className="border">
@@ -23,7 +30,7 @@ function FunctionComponent(props) {
       <button onClick={() => setCount()}>{count}</button>
       <button
         onClick={() => {
-          setCount2(count2 + 1);
+          setCount2(count2 + 1)
         }}
       >
         {count2}
@@ -42,14 +49,14 @@ function FunctionComponent(props) {
 
         {count2 === 2
           ? [2, 1, 3, 4].map((item) => {
-              return <li key={item}>{item}</li>;
+              return <li key={item}>{item}</li>
             })
           : [0, 1, 2, 3, 4].map((item) => {
-              return <li key={item}>{item}</li>;
+              return <li key={item}>{item}</li>
             })}
       </ul>
     </div>
-  );
+  )
 }
 class ClassComponent extends Component {
   constructor(props) {
